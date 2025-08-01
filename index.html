@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body { font-family: Arial; padding: 20px; }
+    form { max-width: 500px; margin: auto; }
+    input, select, button { margin: 10px 0; width: 100%; padding: 10px; }
+  </style>
+</head>
+<body style="background-image: url('db.png')">
+  <h1 style="color: antiquewhite;">Enter Therapist & Patient Details</h1>
+  <form id="detailsForm">
+    
+    
+	   <input type="text" id="TherapistName" placeholder="Therapist Name" required><br>
+    <input type="text" id="TherapistId" placeholder="Therapist Id" required><br>
+    <input type="text" id="PatientName" placeholder="Patient Name" required><br>
+	    <input type="tex" id="LeadId" placeholder="Lead ID" required><br>
+	  <select id="Stage" required>
+      <option value="">At which stage are you using this document?</option>
+      <option value="Lead">Lead</option>
+      <option value="Assessment">Assessment</option>
+      <option value="Treatment">Treatment</option>
+      <option value="Discharge">Discharge</option>
+    </select><br>
+	  <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("detailsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = {
+        TherapistName: document.getElementById("TherapistName").value,
+        TherapistId: document.getElementById("TherapistId").value,
+        PatientName: document.getElementById("PatientName").value,
+        LeadId: document.getElementById("LeadId").value,
+        Stage: document.getElementById("Stage").value
+      };
+      localStorage.setItem("sessionData", JSON.stringify(data));
+      localStorage.setItem("sessionStart", Date.now());
+      //window.location.href = "landing.html";
+		window.location.href="Visit4-Gastro-2.html";
+    });
+  </script>
+</body>
+</html>
